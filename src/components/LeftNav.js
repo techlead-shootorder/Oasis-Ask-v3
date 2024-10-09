@@ -16,6 +16,8 @@ function LeftNav() {
       }
     >
       <div className="flex items-start justify-between w-full">
+    
+        <img src="/oasis-logo.webp" alt="logo" className="w-24 mb-6" />
         <span
           className="border bg-gray-200 mt-16 text-gray-400 font-semibold px-4 py-3 rounded-full text-xs flex gap-4 items-center justify-center cursor-pointer"
           onClick={() => window.location.reload()}
