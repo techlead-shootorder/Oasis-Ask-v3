@@ -14,8 +14,9 @@ export const sendMsgToAI = async (msg) => {
       Authorization: `Bearer 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`, 
     },
     body: JSON.stringify({
-      model: "gpt-3.5-turbo",
+      model: "gpt-4o",
       messages: [
+
         { role: "user", content: msg }
       ],
       temperature: 0.2,

@@ -56,7 +56,7 @@ function ChatContainer() {
         <span className="flex gap-2 items-center justify-center bg-[#f0f4f9] rounded-full shadow-md w-[90%] lg:w-2/5 xl:w-1/2">
           <input
             type="text"
-            placeholder="Enter a Promt Here"
+            placeholder="Enter a prompt Here"
             className="h-full  text-black bg-transparent px-4 py-4 w-full border-none outline-none text-base"
             value={chatValue}
             onChange={(e) => setChatValue(e.target.value)}

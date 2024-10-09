@@ -199,3 +199,15 @@
     transform: translateX(-50%);
   }
 }
+
+.markupp p{
+  padding-top:10px;
+}
+.markupp ul,.markupp ol{
+  padding-left: 20px;
+}
+.markupp li{
+  padding: 10px 10px;
+  list-style-type: circle;
+  
+}
