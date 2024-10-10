@@ -70,6 +70,7 @@ export const sendMsgToAI = async (msg) => {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      
       Authorization: `Bearer ${process.env.REACT_APP_OPEN_AI_API_KEY}`,  // Add your API Key here
     },
     body: JSON.stringify({
