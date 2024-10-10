@@ -55,7 +55,7 @@ function LeftNav() {
         !showSlide
           ? `h-screen ${
               isDarkMode ? "bg-[#1e1f20]" : "bg-[#f0f4f9]"
-            } w-[300px] border-r  hidden lg:flex items-center justify-between p-2 text-black flex-col translate-x-0`
+            } w-[300px]  hidden lg:flex items-center justify-between p-2 text-black flex-col translate-x-0`
           : "hidden"
       }
     >

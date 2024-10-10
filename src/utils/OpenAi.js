@@ -20,7 +20,7 @@ export const sendMsgToAI = async (msg) => {
       Authorization: `Bearer ${process.env.REACT_APP_OPEN_AI_API_KEY}`, 
     },
     body: JSON.stringify({
-      model: "gpt-4",
+      model: "gpt-4o",
       messages: conversationHistory, // Send the entire conversation history
       temperature: 0.2,
       max_tokens: 2048,
