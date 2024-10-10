@@ -4,8 +4,8 @@ import "./index.css";
 import App from "./App";
 import AppContext from "./utils/Context";
 import { ClerkProvider } from '@clerk/clerk-react'
-import dotenv, { config } from 'dotenv';
-config.dotenv = dotenv;
+// import dotenv, { config } from 'dotenv';
+// config.dotenv = dotenv;
 
 
 const PUBLISHABLE_KEY = "pk_test_bmljZS1kb3ZlLTIwLmNsZXJrLmFjY291bnRzLmRldiQ";
