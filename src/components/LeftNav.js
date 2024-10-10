@@ -1,9 +1,20 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { AiOutlinePlus } from "react-icons/ai";
 import { LuPanelLeftClose } from "react-icons/lu";
 import { FiUser, FiMessageSquare } from "react-icons/fi";
 import { SlOptions } from "react-icons/sl";
 import { ContextApp } from "../utils/Context";
+import {
+  SignedIn,
+  SignedOut,
+  SignInButton,
+  UserButton,
+} from "@clerk/clerk-react";
+import { useUser } from '@clerk/clerk-react'
+// import Login from "./Page/Login/Login";
+
+import { BsSun, BsMoon } from "react-icons/bs";
+
 
 
 const services = [
@@ -46,8 +57,28 @@ const services = [
 
 ]
 function LeftNav() {
-  const { setShowSlide, showSlide, handleQuery, isDarkMode } =
-    useContext(ContextApp);
+
+  const { isSignedIn, user, isLoaded } = useUser()
+  const {
+    setShowSlide,
+    showSlide,
+    setMobile,
+    Mobile,
+    isDarkMode,
+    setIsDarkMode,
+    chatValue,
+    setChatValue,
+    handleSend,
+    handleKeyPress,
+  } = useContext(ContextApp);
+
+  function handleToogle(){
+    setIsDarkMode(!isDarkMode);
+  }
+
+  const toggleButtonClass = `px-2 text-xl border border-gray-600 rounded-md ${!isDarkMode ? 'bg-gray-600 text-white' : 'bg-white'}`
+
+  
   return (
     // top section
     <div
@@ -92,7 +123,7 @@ function LeftNav() {
 
       {/* bottom section  */}
       <div className="w-full border-t border-gray-600 flex flex-col gap-2 items-center justify-center p-2">
-        <span className="rounded w-full py-2 px-2 text-xs flex gap-1 items-center justify-between cursor-pointer hover:bg-gray-800 transition-all duration-300">
+        <span className="rounded w-full py-2 px-2 text-xs flex gap-1 items-center justify-between cursor-pointer  transition-all duration-300">
           {/* <span className="flex gap-1 items-center justify-center text-sm">
             <FiUser />
             Upgrade to Plus
@@ -101,7 +132,7 @@ function LeftNav() {
             NEW
           </span> */}
         </span>
-        <span className="rounded w-full py-2 px-2 text-xs flex gap-1 items-center justify-between cursor-pointer hover:bg-gray-800 transition-all duration-300">
+        <span className="rounded w-full py-2 px-2 text-xs flex gap-1 items-center justify-between cursor-pointer transition-all duration-300">
           {/* <span className="flex gap-2 items-center justify-center text-sm font-bold">
             <img
               src="/user.jpeg"
@@ -113,6 +144,22 @@ function LeftNav() {
           <span className="rounded-md  px-1.5 py-0.5 text-xs font-medium uppercase text-gray-500">
             <SlOptions />
           </span> */}
+          <div>
+          <SignedOut>
+          {/* Use SignInButton with an onClick event */}
+          <div className=" flex gap-2 justify-end mt-4 z-50">
+            
+            {isDarkMode ? <button className={toggleButtonClass}  onClick={handleToogle}>{<BsSun/>}</button>  : <button className={toggleButtonClass} onClick={handleToogle}>{<BsMoon/>}</button> }
+            <SignInButton className="bg-[#874487] text-white px-4 py-2 rounded-md mr-4"></SignInButton>
+          </div>
+        </SignedOut>
+        <SignedIn>
+        <div className=" flex gap-2 justify-end mt-4 z-50">
+        {isDarkMode ? <button className={toggleButtonClass}  onClick={handleToogle}>{<BsSun/>}</button>  : <button className={toggleButtonClass} onClick={handleToogle}>{<BsMoon/>}</button> }
+          <UserButton className="bg-gray-500 text-black px-4 py-2 rounded-md mr-4"></UserButton>
+          </div>
+        </SignedIn>
+        </div>
         </span>
       </div>
     </div>

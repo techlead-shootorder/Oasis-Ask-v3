@@ -1,113 +1,123 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { ContextApp } from "../utils/Context";
 import { useUser } from "@clerk/clerk-react";
+import Modal from "./Modal";
 
 const Welcome = () => {
   const { isSignedIn, user, isLoaded } = useUser();
   const {
-    setShowSlide,
+   
     showWelcome,
-    setShowWelcome,
+   
     isDarkMode,
-    showSlide,
-    setMobile,
-    Mobile,
-    chatValue,
-    setChatValue,
+   
     handleSend,
-    handleKeyPress,
+    
   } = useContext(ContextApp);
 
-  const boxStyle = ` ${
-    isDarkMode ? "bg-[#1e1f20] text-white" : "bg-[#f0f4f9] "
-  } cursor-pointer p-5 w-[222px] flex-shrink-0 flex flex-col items-end rounded-[0.75rem] justify-between `;
+  const boxStyle = ` ${isDarkMode ? "bg-[#1e1f20] text-white" : "bg-[#f0f4f9] "
+    } cursor-pointer p-5 w-[23%] flex-shrink-0 flex flex-col items-end rounded-[0.75rem] justify-between `;
+
+    const [modal, setModal] = useState(false);
 
   return (
-    <div
-      className={`${
-        showWelcome ? "" : "hidden"
-      } flex items-center justify-center w-full`}
-    >
-      <div className="max-w-5xl">
-        {isSignedIn ? (
-          <>
-          
+    <>
+      <div
+        className={`${showWelcome ? "" : "hidden"
+          } flex items-center justify-center w-full`}
+      >
+        <div className="max-w-4xl">
+          {isSignedIn ? (
+            <>
+
               <h1 className="text-[54px] bg-clip-text bg-gradient-to-r from-[#4285f4] to-[#d96570] text-transparent leading-[64px] font-semibold">
-                Hello {user.fullName}, 
+                Hello {user.fullName},
               </h1>
               <div className="flex gap-2 items-center">
-              <h1 className="text-[54px] bg-clip-text bg-gradient-to-r from-[#4285f4] to-[#d96570] text-transparent leading-[64px] font-semibold">
-                Welcome to Ask Oasis
-              </h1>
-              <img
-                src="/oasis-logo.webp"
-                className="object-contain"
-                width="150px"
-              />
-            </div>
-            <div>
-              <h1 className="text-[2.6rem] text-[#A0A0A0] font-semibold">
-                You are in the good hands of Science
-              </h1>
-            </div>
-          </>
-        ) : (
-          <>
-            <div className="flex gap-2 items-center">
-              <h1 className="text-[54px] bg-clip-text bg-gradient-to-r from-[#4285f4] to-[#d96570] text-transparent leading-[64px] font-semibold">
-                Welcome to Ask Oasis
-              </h1>
-              <img
-                src="/oasis-logo.webp"
-                className="object-contain"
-                width="150px"
-              />
-            </div>
-            <div>
-              <h1 className="text-[2.6rem] text-[#A0A0A0] font-semibold">
-                You are in the good hands of Science
-              </h1>
-            </div>
-          </>
-        )}
+                <h1 className="text-[54px] bg-clip-text bg-gradient-to-r from-[#4285f4] to-[#d96570] text-transparent leading-[64px] font-semibold">
+                  Welcome to Ask Oasis
+                </h1>
+                <img
+                  src="/oasis-logo.webp"
+                  className="object-contain"
+                  width="150px"
+                />
+              </div>
+              <div>
+                <h1 className="text-[2.6rem] text-[#A0A0A0] font-semibold">
+                  You are in the good hands of Science
+                </h1>
+              </div>
+            </>
+          ) : (
+            <>
+              <div className="flex gap-2 items-center">
+                <h1 className="text-[54px] bg-clip-text bg-gradient-to-r from-[#4285f4] to-[#d96570] text-transparent leading-[64px] font-semibold">
+                  Welcome to Ask Oasis
+                </h1>
+                <img
+                  src="/oasis-logo.webp"
+                  className="object-contain"
+                  width="150px"
+                />
+              </div>
+              <div>
+                <h1 className="text-[2.6rem] text-[#A0A0A0] font-semibold">
+                  You are in the good hands of Science
+                </h1>
+              </div>
+            </>
+          )}
 
-        <div className="boxes-container flex gap-4 mt-20">
-          <div
-            onClick={(e) => {
-              handleSend(e.target.innerText);
-            }}
-            className={boxStyle}
-          >
-            What could be causing our infertility?
+          <div className="boxes-container flex justify-between gap-4 mt-20">
+            <div
+              onClick={(e) => {
+                handleSend(e.target.innerText);
+              }}
+              className={boxStyle}
+            >
+              What could be causing our infertility?
+            </div>
+
+            <div
+              onClick={(e) => {
+                handleSend(e.target.innerText);
+              }}
+              className={boxStyle}
+            >
+              What tests or evaluations should we undergo?
+            </div>
+            <div
+              onClick={(e) => {
+                handleSend(e.target.innerText);
+              }}
+              className={boxStyle}
+            >
+              What treatment options are available for us?
+            </div>
+            <div
+              onClick={(e) => {
+                handleSend(e.target.innerText);
+              }}
+              className={boxStyle}
+            >
+              How long should we try to conceive before seeking medical help?
+            </div>
           </div>
 
-          <div
-            onClick={(e) => {
-              handleSend(e.target.innerText);
-            }}
-            className={boxStyle}
-          >
-            What tests or evaluations should we undergo?
-          </div>
-          <div
-            onClick={(e) => {
-              handleSend(e.target.innerText);
-            }}
-            className={boxStyle}
-          >
-            What treatment options are available for us?
-          </div>
-          <div
-            onClick={(e) => {
-              handleSend(e.target.innerText);
-            }}
-            className={boxStyle}
-          >
-            How long should we try to conceive before seeking medical help?
-          </div>
+          <div className="mt-4">
+        <p className={`py-4 px-4 rounded-md ${isDarkMode ? "bg-[#1e1f20] text-white" : "bg-[#f0f4f9] "} `}>
+          The "Ask Oasis" AI chatbot is designed to provide general information related to fertility, reproductive health, and related services. However, the content generated by the chatbot is for informational purposes only and does not constitute professional medical advice, diagnosis, or treatment.<span className="underline text-sm ml-1 cursor-pointer" onClick={()=>setModal(true)}>Read More</span>
+        </p>
+
+        { modal && <Modal setModal={setModal} />}
+        </div>
         </div>
       </div>
-    </div>
+
+      
+    
+     </>
   );
 };
 

@@ -18,6 +18,10 @@ function ChatContainer() {
     isDarkMode,
   } = useContext(ContextApp);
 
+  const [modal, showModal] = useState(false);
+
+
+
   
 
  
@@ -72,8 +76,8 @@ function ChatContainer() {
             onClick={handleSend}
           />
         </span>
-        <p className="lg:text-xs text-gray-400 text-center text-[10px]">
-         Research on Health Care
+        <p onClick={()=> showModal(true)} className="lg:text-xs text-gray-400 text-center text-[10px]">
+        © Sadguru Healthcare Services Pvt Ltd. 2024. All Rights Reserved
         </p>
       </div>
     </div>
