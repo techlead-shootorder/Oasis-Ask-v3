@@ -9,11 +9,11 @@ import { ContextApp } from "../utils/Context";
 const services = [
   {
     title: 'Ovulation Inducation With Timed Intercourse',
-    url: '',
+    url: 'https://oasisindia.in/our-treatments/ovulation-induction-with-timed-intercourse/',
   },
   {
     title: 'IUI - Intra Uterine Insemination',
-    url: '',
+    url: 'https://oasisindia.in/our-treatments/iui-intra-uterine-insemination/',
   },
   {
     title: '  IVF - In Vitro Fertilization',
