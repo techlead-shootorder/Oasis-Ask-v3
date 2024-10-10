@@ -7,8 +7,7 @@ let conversationHistory = [
 
 export const sendMsgToAI = async (msg) => {
   const API_URL = "https://api.openai.com/v1/chat/completions";
-  const ReactAPP = process.env.REACT_APP_OPEN_AI_API_KEY;
-  console.log("ReactAPP", ReactAPP);
+ 
   console.log("msg", msg);
 
   // Add the user's message to the conversation history
