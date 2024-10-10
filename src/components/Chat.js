@@ -6,16 +6,10 @@ function Chat() {
   const { message, msgEnd } = useContext(ContextApp);
 
   const {
-    setShowSlide,
-    showSlide,
+    
     showWelcome,
-    setShowWelcome,
-    setMobile,
-    Mobile,
-    chatValue,
-    setChatValue,
-    handleSend,
-    handleKeyPress,
+    isDarkMode,
+    
   } = useContext(ContextApp);
 
   return (
@@ -36,10 +30,10 @@ function Chat() {
               alt="user"
               className="w-10 h-10 rounded object-cover"
             />
-            <p className="text-black text-[15px] markupp"><Markdown>{msg?.text}</Markdown></p>
+            <p className={`${isDarkMode ? 'text-white' : 'text-black'} text-[15px] markupp`}><Markdown>{msg?.text}</Markdown></p>
           </span>
         ))}
-        <div ref={msgEnd} />
+        <div className={`${isDarkMode ? 'text-white' : 'text-black'}`} ref={msgEnd}></div>
       </div>
     </div>
   );

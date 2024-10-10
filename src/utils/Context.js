@@ -14,6 +14,7 @@ const AppContext = ({ children }) => {
       isBot: true,
     },
   ]);
+  const [isDarkMode, setIsDarkMode] = useState(false);
   const msgEnd = useRef(null);
 
   useEffect(() => {
@@ -68,6 +69,8 @@ const AppContext = ({ children }) => {
         setShowSlide,
         showWelcome,
         setShowWelcome,
+        isDarkMode,
+        setIsDarkMode,
         Mobile,
         setMobile,
         chatValue,

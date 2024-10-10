@@ -5,13 +5,13 @@ import { FiUser, FiMessageSquare } from "react-icons/fi";
 import { SlOptions } from "react-icons/sl";
 import { ContextApp } from "../utils/Context";
 function LeftNav() {
-  const { setShowSlide, showSlide, handleQuery } = useContext(ContextApp);
+  const { setShowSlide, showSlide, handleQuery, isDarkMode } = useContext(ContextApp);
   return (
     // top section
     <div
       className={
         !showSlide
-          ? "h-screen bg-[#f0f4f9] w-[300px] border-r  hidden lg:flex items-center justify-between p-2 text-black flex-col translate-x-0"
+          ? `h-screen ${isDarkMode ? 'bg-gray-600' : 'bg-[#f0f4f9]'} w-[300px] border-r  hidden lg:flex items-center justify-between p-2 text-black flex-col translate-x-0`
           : "hidden"
       }
     >

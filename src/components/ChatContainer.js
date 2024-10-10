@@ -15,6 +15,7 @@ function ChatContainer() {
     setChatValue,
     handleSend,
     handleKeyPress,
+    isDarkMode,
   } = useContext(ContextApp);
 
   
@@ -53,11 +54,11 @@ function ChatContainer() {
       {/* chat input section */}
       <div className=" w-full  m-auto flex items-center justify-center flex-col gap-2 my-2">
       
-        <span className="flex gap-2 items-center justify-center bg-[#f0f4f9] rounded-full shadow-md w-[90%] lg:w-2/5 xl:w-1/2">
+        <span className={`flex gap-2 items-center justify-center ${isDarkMode ? 'bg-gray-700' : 'bg-[#f0f4f9]'} rounded-full shadow-md w-[90%] lg:w-2/5 xl:w-1/2`}>
           <input
             type="text"
             placeholder="Enter a prompt Here"
-            className="h-full  text-black bg-transparent px-4 py-4 w-full border-none outline-none text-base"
+            className={`h-full  ${isDarkMode ? 'text-white' : 'text-black'} bg-transparent px-4 py-4 w-full border-none outline-none text-base`}
             value={chatValue}
             onChange={(e) => setChatValue(e.target.value)}
             onKeyUp={handleKeyPress}
@@ -67,7 +68,7 @@ function ChatContainer() {
             className={
               chatValue.length <= 0
                 ? "text-gray-400 cursor-auto mr-6 text-xl"
-                : "text-black cursor-pointer mr-6 text-3xl p-1 rounded "
+                : `${isDarkMode ? 'text-white' : 'text-black'} cursor-pointer mr-6 text-3xl p-1 rounded `
             }
             onClick={handleSend}
           />

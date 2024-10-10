@@ -73,10 +73,10 @@ export const sendMsgToAI = async (msg) => {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer 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`, 
+      Authorization: `Bearer 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`, 
     },
     body: JSON.stringify({
-      model: "gpt-4",
+      model: "gpt-4o",
       messages: conversationHistory, // Send the entire conversation history
       temperature: 0.2,
       max_tokens: 2048,

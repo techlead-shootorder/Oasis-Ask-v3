@@ -12,6 +12,7 @@ const Welcome = () => {
         setShowSlide,
         showWelcome,
         setShowWelcome,
+        isDarkMode,
         showSlide,
         setMobile,
         Mobile,
@@ -20,6 +21,8 @@ const Welcome = () => {
         handleSend,
         handleKeyPress,
       } = useContext(ContextApp);
+
+      const boxStyle = ` ${ isDarkMode ? 'bg-gray-600 text-white' : 'bg-[#f0f4f9] ' } cursor-pointer p-5 w-[222px] flex-shrink-0 flex flex-col items-end rounded-[0.75rem] justify-between bg-secondary transition ease-in-out duration-200 hover:bg-blue-200`
     
   return (
     <div className={`${showWelcome ? '' : 'hidden'} flex items-center justify-center w-full`}>
@@ -34,23 +37,23 @@ const Welcome = () => {
         <div className="boxes-container flex gap-4 mt-20">
           <div onClick={(e)=>{
             handleSend(e.target.innerText)
-            }} className="bg-[#f0f4f9] cursor-pointer p-5 w-[222px] flex-shrink-0 flex flex-col items-end rounded-[0.75rem] justify-between bg-secondary transition ease-in-out duration-200 hover:bg-blue-200">
+            }} className={boxStyle}>
             What could be causing our infertility?
           </div>
 
           <div onClick={(e)=>{
             handleSend(e.target.innerText)
-            }} className="bg-[#f0f4f9] cursor-pointer p-5 w-[222px] flex-shrink-0 flex flex-col items-end rounded-[0.75rem] justify-between bg-secondary transition ease-in-out duration-200 hover:bg-blue-200">
+            }} className={boxStyle}>
             What tests or evaluations should we undergo?
           </div>
           <div onClick={(e)=>{
             handleSend(e.target.innerText)
-            }} className="bg-[#f0f4f9] cursor-pointer p-5 w-[222px] flex-shrink-0 flex flex-col items-end rounded-[0.75rem] justify-between bg-secondary transition ease-in-out duration-200 hover:bg-blue-200">
+            }} className={boxStyle}>
             What treatment options are available for us?
           </div>
           <div onClick={(e)=>{
             handleSend(e.target.innerText)
-            }} className="bg-[#f0f4f9] cursor-pointer p-5 w-[222px] flex-shrink-0 flex flex-col items-end rounded-[0.75rem] justify-between bg-secondary transition ease-in-out duration-200 hover:bg-blue-200">
+            }} className={boxStyle}>
             How long should we try to conceive before seeking medical help?
           </div>
         </div>
