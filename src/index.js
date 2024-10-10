@@ -6,7 +6,8 @@ import AppContext from "./utils/Context";
 import { ClerkProvider } from '@clerk/clerk-react'
 
 
-const PUBLISHABLE_KEY = "pk_test_bmljZS1kb3ZlLTIwLmNsZXJrLmFjY291bnRzLmRldiQ"
+
+const PUBLISHABLE_KEY = process.env.REACT_PUBLIC_CLERK_PUBLISHABLE_KEY;
 
 if (!PUBLISHABLE_KEY) {
   throw new Error('Missing Publishable Key')
