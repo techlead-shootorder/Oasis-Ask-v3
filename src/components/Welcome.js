@@ -22,7 +22,7 @@ const Welcome = () => {
         handleKeyPress,
       } = useContext(ContextApp);
 
-      const boxStyle = ` ${ isDarkMode ? 'bg-gray-600 text-white' : 'bg-[#f0f4f9] ' } cursor-pointer p-5 w-[222px] flex-shrink-0 flex flex-col items-end rounded-[0.75rem] justify-between bg-secondary transition ease-in-out duration-200 hover:bg-blue-200`
+      const boxStyle = ` ${ isDarkMode ? 'bg-[#1e1f20] text-white' : 'bg-[#f0f4f9] ' } cursor-pointer p-5 w-[222px] flex-shrink-0 flex flex-col items-end rounded-[0.75rem] justify-between `
     
   return (
     <div className={`${showWelcome ? '' : 'hidden'} flex items-center justify-center w-full`}>

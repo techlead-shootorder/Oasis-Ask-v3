@@ -73,7 +73,7 @@ export const sendMsgToAI = async (msg) => {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${process.env.OPEN_AI_API_KEY}`, 
+      Authorization: `Bearer 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`, 
     },
     body: JSON.stringify({
       model: "gpt-4o",

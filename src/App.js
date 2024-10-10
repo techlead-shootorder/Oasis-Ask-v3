@@ -46,7 +46,8 @@ function App() {
           </div>
         </SignedOut>
         <SignedIn>
-        <div className=" flex justify-end mt-4 absolute top-0 right-4 z-50">
+        <div className=" flex gap-2 justify-end mt-4 absolute top-0 right-4 z-50">
+        {isDarkMode ? <button className={toggleButtonClass}  onClick={handleToogle}>{<BsSun/>}</button>  : <button className={toggleButtonClass} onClick={handleToogle}>{<BsMoon/>}</button> }
           <UserButton className="bg-gray-500 text-black px-4 py-2 rounded-md mr-4"></UserButton>
           </div>
         </SignedIn>

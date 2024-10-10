@@ -32,11 +32,10 @@ function ChatContainer() {
     >
      
       <span
-        className="rounded px-3 py-[9px] hidden lg:flex items-center justify-center cursor-pointer text-white m-1 hover:bg-gray-600 duration-200"
-        title="Open sidebar"
-        onClick={() => setShowSlide(!showSlide)}
+        className="rounded px-3 py-[9px] hidden lg:flex items-center justify-center text-black m-1 "
+        // onClick={() => setShowSlide(!showSlide)}
       >
-        {showSlide && <LuPanelLeftOpen />}
+        {/* {showSlide && <LuPanelLeftOpen />} */}
       </span>
       <span
         className="rounded px-3 py-[9px] lg:hidden flex items-center justify-center cursor-pointer text-white mt-0 mb-3 border border-gray-600"
@@ -54,7 +53,7 @@ function ChatContainer() {
       {/* chat input section */}
       <div className=" w-full  m-auto flex items-center justify-center flex-col gap-2 my-2">
       
-        <span className={`flex gap-2 items-center justify-center ${isDarkMode ? 'bg-gray-700' : 'bg-[#f0f4f9]'} rounded-full shadow-md w-[90%] lg:w-2/5 xl:w-1/2`}>
+        <span className={`flex gap-2 items-center justify-center ${isDarkMode ? 'bg-[#1e1f20]' : 'bg-[#f0f4f9]'} rounded-full shadow-md w-[90%] lg:w-2/5 xl:w-1/2`}>
           <input
             type="text"
             placeholder="Enter a prompt Here"

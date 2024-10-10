@@ -30,7 +30,7 @@ function Chat() {
               alt="user"
               className="w-10 h-10 rounded object-cover"
             />
-            <p className={`${isDarkMode ? 'text-white' : 'text-black'} text-[15px] markupp`}><Markdown>{msg?.text}</Markdown></p>
+            <p className={`${isDarkMode ? 'text-white' : 'text-black'} text-[15px] markupp `}><Markdown>{msg?.text}</Markdown></p>
           </span>
         ))}
         <div className={`${isDarkMode ? 'text-white' : 'text-black'}`} ref={msgEnd}></div>
