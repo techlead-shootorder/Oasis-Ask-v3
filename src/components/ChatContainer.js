@@ -55,7 +55,7 @@ function ChatContainer() {
        <Welcome />
 
       {/* chat input section */}
-      <div className=" w-full  m-auto flex items-center justify-center flex-col gap-2 my-2">
+      <div className=" w-full  m-auto flex items-center justify-center flex-col gap-2 my-2 ">
       
         <span className={`flex gap-2 items-center justify-center ${isDarkMode ? 'bg-[#1e1f20]' : 'bg-[#f0f4f9]'} rounded-full shadow-md w-[90%] lg:w-2/5 xl:w-1/2`}>
           <input

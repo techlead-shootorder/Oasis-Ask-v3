@@ -36,11 +36,11 @@ const Welcome = () => {
               <h1 className="text-[32px] sm:text-[40px] md:text-[54px] bg-clip-text bg-gradient-to-r from-[#4285f4] to-[#d96570] text-transparent leading-tight md:leading-[64px] font-semibold text-center sm:text-left">
                 Welcome to Ask Oasis
               </h1>
-              <img
+              {/* <img
                 src="/oasis-logo.webp"
                 className="object-contain w-[100px] sm:w-[120px] md:w-[150px]"
                 alt="Oasis logo"
-              />
+              /> */}
             </div>
             <div className="text-center sm:text-left">
               <h1 className="text-[1.6rem] sm:text-[2.2rem] md:text-[2.6rem] text-[#A0A0A0] font-semibold">
@@ -54,11 +54,11 @@ const Welcome = () => {
               <h1 className="text-[32px] sm:text-[40px] md:text-[54px] bg-clip-text bg-gradient-to-r from-[#4285f4] to-[#d96570] text-transparent leading-tight md:leading-[64px] font-semibold text-center sm:text-left">
                 Welcome to Ask Oasis
               </h1>
-              <img
+              {/* <img
                 src="/oasis-logo.webp"
                 className="object-contain w-[100px] sm:w-[120px] md:w-[150px]"
                 alt="Oasis logo"
-              />
+              /> */}
             </div>
             <div className="text-center sm:text-left">
               <h1 className="text-[1.6rem] sm:text-[2.2rem] md:text-[2.6rem] text-[#A0A0A0] font-semibold">

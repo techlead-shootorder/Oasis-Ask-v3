@@ -60,16 +60,11 @@ function LeftNav() {
 
   const { isSignedIn, user, isLoaded } = useUser()
   const {
-    setShowSlide,
-    showSlide,
-    setMobile,
-    Mobile,
+    
+    showSlide,    
     isDarkMode,
     setIsDarkMode,
-    chatValue,
-    setChatValue,
-    handleSend,
-    handleKeyPress,
+  
   } = useContext(ContextApp);
 
   function handleToogle(){
@@ -90,23 +85,16 @@ function LeftNav() {
           : "hidden"
       }
     >
-      <div className="flex flex-col w-full">
-        <img src="/oasis-logo.webp" alt="logo" className="w-24 mb-6" />
-        <span
-          className="border bg-gray-200 mt-4 text-gray-400 font-semibold px-4 py-3 rounded-full text-xs flex gap-4 items-center justify-center cursor-pointer"
-          onClick={() => window.location.reload()}
-        >
-          <AiOutlinePlus fontSize={18} />
-          New Chat
-        </span>
-        {/* <span
-          className="border border-gray-600  rounded px-3 py-[9px] flex items-center justify-center cursor-pointer"
-          title="Close sidebar"
-          onClick={() => setShowSlide(!showSlide)}
-        >
-          <LuPanelLeftClose />
-        </span> */}
-      </div>
+      <div className="flex flex-col w-full items-center">
+  <img src="/oasis-logo.webp" alt="logo" className="w-24 mb-6" />
+  <span
+    className="border bg-gray-200 mt-4 text-gray-400 font-semibold px-4 py-3 rounded-full text-xs flex gap-4 items-center justify-center cursor-pointer"
+    onClick={() => window.location.reload()}
+  >
+    <AiOutlinePlus fontSize={18} />
+    New Chat
+  </span>
+</div>
 
       {/* middle section  */}
       <div className=" h-[80%] w-full p-2 flex items-start justify-start flex-col overflow-hidden overflow-y-auto text-sm scroll my-2">
