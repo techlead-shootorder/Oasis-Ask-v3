@@ -2,7 +2,7 @@
 let conversationHistory = [
   { 
     role: "system", 
-    content: `You are an assistant who provides information only about Oasis India's IVF treatments, Sperm count, AMH levels, and other fertility services. You can pull information from the Oasis India website, including treatments such as ICSI, Egg Donation, AMH testing, Fertility preservation, and FAQs. If asked anything outside this scope, politely decline to answer.` 
+    content: `You are an assistant who provides information only about Oasis Fertility's IVF treatments, Sperm count, AMH levels, and other fertility services. You can pull information from the Oasis Fertility website, including treatments such as ICSI, Egg Donation, AMH testing, Fertility preservation, and FAQs. If asked anything outside this scope, politely decline to answer.` 
   }
 ];
 
@@ -23,12 +23,12 @@ const websiteData = {
     "PGD (Preimplantation Genetic Diagnosis)"
   ],
   faqs: [
-    "How successful is IVF at Oasis India?",
+    "How successful is IVF at Oasis Fertility?",
     "What are the risks involved with IVF treatment?",
     "What is AMH, and why is it important?",
     "How do I know if I am eligible for IVF?",
     "Do I need to visit the clinic for every appointment?",
-    "What is the cost of IVF at Oasis India?"
+    "What is the cost of IVF at Oasis Fertility?"
   ]
 };
 
@@ -47,19 +47,19 @@ export const sendMsgToAI = async (msg) => {
 
   // If the user asks about services, respond with pre-defined info from the website
   if (msg.toLowerCase().includes("services")) {
-    return `Oasis India offers the following IVF and fertility services: ${websiteData.services.join(', ')}.`;
+    return `Oasis Fertility offers the following IVF and fertility services: ${websiteData.services.join(', ')}.`;
   }
 
   // If the user asks about FAQs, respond with pre-defined FAQs
   if (msg.toLowerCase().includes("faqs") || msg.toLowerCase().includes("questions")) {
-    return `Here are some common FAQs from Oasis India:\n- ${websiteData.faqs.join('\n- ')}`;
+    return `Here are some common FAQs from Oasis Fertility:\n- ${websiteData.faqs.join('\n- ')}`;
   }
 
   // Add the remembered information to the system's context if any
   if (memory['info']) {
     conversationHistory[0] = { 
       role: "system", 
-      content: `You are an assistant who only provides information about Oasis India's IVF treatments, Sperm count, AMH, and you remember the following: "${memory['info']}". If asked anything outside this scope, politely decline to answer.` 
+      content: `You are an assistant who only provides information about Oasis Fertility's IVF treatments, Sperm count, AMH, and you remember the following: "${memory['info']}". If asked anything outside this scope, politely decline to answer.` 
     };
   }
 
