@@ -28,27 +28,27 @@ const services = [
   },
   {
     title: '  IVF - In Vitro Fertilization',
-    url: '',
+    url: 'https://oasisindia.in/our-treatments/ivf-in-vitro-fertilization/',
   },
   {
     title: 'Minimally Invasive Surgery',
-    url: '',
+    url: 'https://oasisindia.in/our-treatments/minimally-invasive-surgery/',
   },
   {
     title: 'IVM - In Vitro Maturation Of Oocytes',
-    url: '',
+    url: 'https://oasisindia.in/our-treatments/ivm-in-vitro-maturation-of-oocytes/',
   },
   {
     title: 'Fertility Preservation',
-    url: '',
+    url: 'https://oasisindia.in/our-treatments/fertility-preservation/',
   },
   {
     title: 'PGS - Pre Implantation Genetic Screening',
-    url: '',
+    url: 'https://oasisindia.in/our-treatments/pgs-pre-implantation-genetic-screening/',
   },
   {
     title: 'Freezing/Vitrification',
-    url: '',
+    url: 'https://oasisindia.in/our-treatments/freezing-vitrification/',
   },
   // {
   //   title: 'PGD - Pre Implantation Genetic Diagnosis',
@@ -102,7 +102,7 @@ function LeftNav() {
        {services.map((item)=>(
            <span className={`rounded w-full py-3 px-2 text-xs my-2 flex gap-1 items-center justify-between cursor-pointer ${isDarkMode ? 'text-white' : 'text-black'} hover:bg-gray-400  transition-all duration-300 overflow-hidden truncate whitespace-nowrap`}>
            <span className="flex gap-2 items-center justify-center text-base">
-             <span className="text-sm font-semibold">{item.title}</span>
+             <a href={item.url} target="_blank" className="text-sm font-semibold">{item.title}</a>
            </span>
          </span>
        )) 

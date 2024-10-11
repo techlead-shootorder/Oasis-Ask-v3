@@ -10,19 +10,43 @@ import { useUser } from "@clerk/clerk-react";
 
 const services = [
   {
-    title: "Ovulation Inducation With Timed Intercourse",
-    url: "https://oasisindia.in/our-treatments/ovulation-induction-with-timed-intercourse/",
+    title: 'Ovulation Inducation With Timed Intercourse',
+    url: 'https://oasisindia.in/our-treatments/ovulation-induction-with-timed-intercourse/',
   },
   {
-    title: "IUI - Intra Uterine Insemination",
-    url: "https://oasisindia.in/our-treatments/iui-intra-uterine-insemination/",
+    title: 'IUI - Intra Uterine Insemination',
+    url: 'https://oasisindia.in/our-treatments/iui-intra-uterine-insemination/',
   },
   {
-    title: "IVF - In Vitro Fertilization",
-    url: "",
+    title: '  IVF - In Vitro Fertilization',
+    url: 'https://oasisindia.in/our-treatments/ivf-in-vitro-fertilization/',
   },
-  // Add other services...
-];
+  {
+    title: 'Minimally Invasive Surgery',
+    url: 'https://oasisindia.in/our-treatments/minimally-invasive-surgery/',
+  },
+  {
+    title: 'IVM - In Vitro Maturation Of Oocytes',
+    url: 'https://oasisindia.in/our-treatments/ivm-in-vitro-maturation-of-oocytes/',
+  },
+  {
+    title: 'Fertility Preservation',
+    url: 'https://oasisindia.in/our-treatments/fertility-preservation/',
+  },
+  {
+    title: 'PGS - Pre Implantation Genetic Screening',
+    url: 'https://oasisindia.in/our-treatments/pgs-pre-implantation-genetic-screening/',
+  },
+  {
+    title: 'Freezing/Vitrification',
+    url: 'https://oasisindia.in/our-treatments/freezing-vitrification/',
+  },
+  // {
+  //   title: 'PGD - Pre Implantation Genetic Diagnosis',
+  //   url: '',
+  // },
+
+]
 
 function Mobile() {
   const { Mobile, setMobile, handleQuery, isDarkMode, setIsDarkMode } = useContext(ContextApp);
