@@ -15,8 +15,9 @@ const Welcome = () => {
     
   } = useContext(ContextApp);
 
-  const boxStyle = ` ${isDarkMode ? "bg-[#1e1f20] text-white" : "bg-[#f0f4f9] "
-    } cursor-pointer p-5  flex-shrink-0 flex flex-col rounded-[0.75rem] justify-between `;
+  const boxStyle = ` ${isDarkMode ? "bg-[#1e1f20] text-white" : "bg-[#f0f4f9]"}
+  cursor-pointer p-5 flex-shrink-0 flex flex-col rounded-[0.75rem] justify-between
+  opacity-0 animate-fadeIn transition-opacity duration-500 ease-in-out`;
 
     const [modal, setModal] = useState(false);
 

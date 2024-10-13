@@ -1,7 +1,5 @@
 import React, { useContext } from "react";
 import { AiOutlinePlus } from "react-icons/ai";
-import { FiUser, FiMessageSquare } from "react-icons/fi";
-import { SlOptions } from "react-icons/sl";
 import { MdClose } from "react-icons/md";
 import { BsSun, BsMoon } from "react-icons/bs";
 import { ContextApp } from "../utils/Context";
@@ -49,8 +47,8 @@ const services = [
 ]
 
 function Mobile() {
-  const { Mobile, setMobile, handleQuery, isDarkMode, setIsDarkMode } = useContext(ContextApp);
-  const { isSignedIn } = useUser();
+  const { Mobile, setMobile, isDarkMode, setIsDarkMode } = useContext(ContextApp);
+  
 
   function handleToggleDarkMode() {
     setIsDarkMode(!isDarkMode);
@@ -94,7 +92,7 @@ function Mobile() {
               } hover:bg-gray-400 transition-all duration-300 overflow-hidden truncate whitespace-nowrap`}
             >
               <span className="flex gap-2 items-center justify-center text-base">
-                <FiMessageSquare />
+               
                 <span className="text-sm font-semibold">{item.title}</span>
               </span>
             </a>

@@ -5,26 +5,18 @@ import {
   SignInButton,
   UserButton,
 } from "@clerk/clerk-react";
-import { useUser } from '@clerk/clerk-react'
-import Login from "./Page/Login/Login";
+
 import { useContext, useState } from "react";
 import { BsSun, BsMoon } from "react-icons/bs";
 import { ContextApp } from "./utils/Context";
 
 function App() {
-  const { isSignedIn, user, isLoaded } = useUser()
+  
   const {
-    setShowSlide,
-    showSlide,
-    setMobile,
-    Mobile,
+ 
     isDarkMode,
     setIsDarkMode,
-    chatValue,
-    setChatValue,
-    handleSend,
-    handleKeyPress,
-  } = useContext(ContextApp);
+      } = useContext(ContextApp);
 
   function handleToogle(){
     setIsDarkMode(!isDarkMode);

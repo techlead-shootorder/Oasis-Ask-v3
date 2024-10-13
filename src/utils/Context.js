@@ -1,5 +1,6 @@
 import { createContext, useEffect, useRef, useState } from "react";
 import { sendMsgToAI } from "./OpenAi";
+
 export const ContextApp = createContext();
 
 const AppContext = ({ children }) => {
@@ -9,8 +10,7 @@ const AppContext = ({ children }) => {
   const [showWelcome, setShowWelcome] = useState(true);
   const [message, setMessage] = useState([
     {
-      // text: "Hi, I'm ChatGPT, a powerful language model created by OpenAI. My primary function is to assist users in generating human-like text based on the prompts and questions I receive. I have been trained on a diverse range of internet text up until September 2021, so I can provide information, answer questions, engage in conversations, offer suggestions, and more on a wide array of topics. Please feel free to ask me anything or let me know how I can assist you today!",
-      text: "",
+      text: "Hi, I'm your assistant! How can I help you today?",
       isBot: true,
     },
   ]);
@@ -18,39 +18,51 @@ const AppContext = ({ children }) => {
   const msgEnd = useRef(null);
 
   useEffect(() => {
-    msgEnd.current.scrollIntoView();
+    if (msgEnd.current) {
+      msgEnd.current.scrollIntoView({ behavior: "smooth" });
+    }
   }, [message]);
 
-  // button Click function
+  // Send message function with streaming support
   const handleSend = async (query = '') => {
-
-    let text = ''
-    if(chatValue) {
+    let text = '';
+    if (chatValue) {
       text = chatValue;
-    }
-    else{
+    } else {
       text = query;
     }
+
+    // Add the user's message to the chat
     setChatValue("");
-    setMessage([...message, { text, isBot: false }]);
-    setShowWelcome(false);
-    
-    const res = await sendMsgToAI(query ? query : text);
-    setMessage([
-      ...message,
-      { text, isBot: false },
-      { text: res, isBot: true },
+    setMessage((prevMessages) => [
+      ...prevMessages,
+      { text, isBot: false }
     ]);
+    setShowWelcome(false);
+
+    // Add an empty bot message that will be updated with streamed chunks
+    let botMessage = { text: "", isBot: true };
+    setMessage((prevMessages) => [
+      ...prevMessages,
+      botMessage
+    ]);
+
+    // Stream the AI response
+    await sendMsgToAI(query ? query : text, (chunk) => {
+      // Append each chunk to the bot's message
+      botMessage.text += chunk;
+      setMessage((prevMessages) => [...prevMessages]);
+    });
   };
 
-  // Enter Click function
+  // Handle "Enter" key press to send the message
   const handleKeyPress = (e) => {
     if (e.key === "Enter") {
       handleSend();
     }
   };
 
-  // Query Click function
+  // Handle query button clicks (FAQs, suggestions, etc.)
   const handleQuery = async (e) => {
     const text = e.target.innerText;
     setMessage([...message, { text, isBot: false }]);
@@ -62,6 +74,7 @@ const AppContext = ({ children }) => {
     ]);
     setShowWelcome(false);
   };
+
   return (
     <ContextApp.Provider
       value={{
@@ -86,4 +99,5 @@ const AppContext = ({ children }) => {
     </ContextApp.Provider>
   );
 };
+
 export default AppContext;

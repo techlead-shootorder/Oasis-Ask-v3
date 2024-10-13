@@ -1,13 +1,11 @@
 import React, { useContext, useState } from "react";
 import { ContextApp } from "../utils/Context";
-import { LuPanelLeftOpen } from "react-icons/lu";
 import { HiOutlineMenuAlt2 } from "react-icons/hi";
 import { RiSendPlane2Fill } from "react-icons/ri";
 import Chat from "./Chat";
 import Welcome from "./Welcome";
 function ChatContainer() {
   const {
-    setShowSlide,
     showSlide,
     setMobile,
     Mobile,

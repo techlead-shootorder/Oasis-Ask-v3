@@ -1,8 +1,5 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState  } from "react";
 import { AiOutlinePlus } from "react-icons/ai";
-import { LuPanelLeftClose } from "react-icons/lu";
-import { FiUser, FiMessageSquare } from "react-icons/fi";
-import { SlOptions } from "react-icons/sl";
 import { ContextApp } from "../utils/Context";
 import {
   SignedIn,
@@ -10,7 +7,7 @@ import {
   SignInButton,
   UserButton,
 } from "@clerk/clerk-react";
-import { useUser } from '@clerk/clerk-react'
+
 // import Login from "./Page/Login/Login";
 
 import { BsSun, BsMoon } from "react-icons/bs";
@@ -58,7 +55,6 @@ const services = [
 ]
 function LeftNav() {
 
-  const { isSignedIn, user, isLoaded } = useUser()
   const {
     
     showSlide,    
@@ -66,10 +62,29 @@ function LeftNav() {
     setIsDarkMode,
   
   } = useContext(ContextApp);
-
+  const [location, setLocation] = useState(null);
   function handleToogle(){
     setIsDarkMode(!isDarkMode);
   }
+
+  useEffect(() => {
+    if ("geolocation" in navigator) {
+      navigator.geolocation.getCurrentPosition(async (position) => {
+        const { latitude, longitude } = position.coords;
+
+        // Reverse geocode to get city/country using an API like OpenStreetMap or Google
+        const response = await fetch(
+          `https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=json`
+        );
+        const data = await response.json();
+        const city = data.address.city || data.address.town || data.address.village;
+        const country = data.address.country;
+        setLocation(`${city}, ${country}`);
+      });
+    } else {
+      setLocation("Location not available");
+    }
+  }, []);
 
   const toggleButtonClass = `px-2 text-xl border border-gray-600 rounded-md ${!isDarkMode ? 'bg-gray-600 text-white' : 'bg-white'}`
 
@@ -99,10 +114,10 @@ function LeftNav() {
       {/* middle section  */}
       <div className=" h-[80%] w-full p-2 flex items-start justify-start flex-col overflow-hidden overflow-y-auto text-sm scroll my-2">
         {/* msg  */}
-       {services.map((item)=>(
-           <span className={`rounded w-full py-3 px-2 text-xs my-2 flex gap-1 items-center justify-between cursor-pointer ${isDarkMode ? 'text-white' : 'text-black'} hover:bg-gray-400  transition-all duration-300 overflow-hidden truncate whitespace-nowrap`}>
+       {services.map((item, index)=>(
+           <span key={index} className={`rounded w-full py-3 px-2 text-xs my-2 flex gap-1 items-center justify-between cursor-pointer ${isDarkMode ? 'text-white' : 'text-black'} hover:bg-gray-400  transition-all duration-300 overflow-hidden truncate whitespace-nowrap`}>
            <span className="flex gap-2 items-center justify-center text-base">
-             <a href={item.url} target="_blank" className="text-sm font-semibold">{item.title}</a>
+             <a href={item.url} rel="noreferrer" target="_blank" className="text-sm font-semibold">{item.title}</a>
            </span>
          </span>
        )) 
@@ -110,45 +125,19 @@ function LeftNav() {
       </div>
 
       {/* bottom section  */}
-      <div className="w-full border-t border-gray-600 flex flex-col gap-2 items-center justify-center p-2">
-        <span className="rounded w-full py-2 px-2 text-xs flex gap-1 items-center justify-between cursor-pointer  transition-all duration-300">
-          {/* <span className="flex gap-1 items-center justify-center text-sm">
-            <FiUser />
-            Upgrade to Plus
-          </span> */}
-          {/* <span className="rounded-md bg-yellow-200 px-1.5 py-0.5 text-xs font-medium uppercase text-gray-800">
-            NEW
-          </span> */}
-        </span>
-        <span className="rounded w-full py-2 px-2 text-xs flex gap-1 items-center justify-between cursor-pointer transition-all duration-300">
-          {/* <span className="flex gap-2 items-center justify-center text-sm font-bold">
-            <img
-              src="/user.jpeg"
-              alt="user"
-              className="w-8 h-8 object-cover rounded-sm"
-            />
-            Ritesh
-          </span>
-          <span className="rounded-md  px-1.5 py-0.5 text-xs font-medium uppercase text-gray-500">
-            <SlOptions />
-          </span> */}
-          <div>
-          <SignedOut>
-          {/* Use SignInButton with an onClick event */}
-          <div className=" flex gap-2 justify-end mt-4 z-50">
-            
-            {isDarkMode ? <button className={toggleButtonClass}  onClick={handleToogle}>{<BsSun/>}</button>  : <button className={toggleButtonClass} onClick={handleToogle}>{<BsMoon/>}</button> }
-            <SignInButton className="bg-[#874487] text-white px-4 py-2 rounded-md mr-4"></SignInButton>
-          </div>
-        </SignedOut>
-        <SignedIn>
-        <div className=" flex gap-2 justify-end mt-4 z-50">
-        {isDarkMode ? <button className={toggleButtonClass}  onClick={handleToogle}>{<BsSun/>}</button>  : <button className={toggleButtonClass} onClick={handleToogle}>{<BsMoon/>}</button> }
-          <UserButton className="bg-gray-500 text-black px-4 py-2 rounded-md mr-4"></UserButton>
-          </div>
-        </SignedIn>
+      <div className="mt-10 w-full border-t border-gray-600 flex flex-col gap-2 items-center justify-center p-2 absolute bottom-0">
+      {/* <button className="bg-[#874487] text-white font-semibold w-full py-2 rounded-md text-sm mb-2">
+          Ask OasisFertility
+        </button> */}
+        <div className="text-xs text-gray-500 font-semibold my-4">
+          <a href="https://oasisindia.in/book-an-appointment/" className="bg-[#874487] text-white font-semibold w-full p-2 rounded-md text-sm mb-2 "> Book a Appointment</a>
         </div>
-        </span>
+         {/* Display location */}
+         <div className="text-xs text-gray-500">
+          {location ? `Your location: ${location}` : "Detecting location..."}
+        </div>
+       
+     
       </div>
     </div>
   );
